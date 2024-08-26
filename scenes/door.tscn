@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cagcy6i38iiqf"]
+[gd_scene load_steps=12 format=3 uid="uid://cagcy6i38iiqf"]
 
+[ext_resource type="Script" path="res://scripts/door_parent.gd" id="1_jvpoc"]
 [ext_resource type="Material" uid="uid://gwn6lg3126f1" path="res://material/table.tres" id="1_l4glf"]
 [ext_resource type="Script" path="res://scripts/door.gd" id="1_oijmw"]
 
@@ -9,21 +10,6 @@
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_0rhr5"]
 radial_segments = 16
-
-[sub_resource type="Animation" id="Animation_ckclt"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("hinge:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_mtmhh"]
 length = 0.001
@@ -55,17 +41,50 @@ tracks/0/keys = {
 "values": [Vector3(0, 1.5708, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ckclt"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hinge:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jhshp"]
+resource_name = "locked"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hinge:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 1.53589, 0), Vector3(0, 1.6057, 0), Vector3(0, 1.5708, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b8awx"]
 _data = {
 "RESET": SubResource("Animation_mtmhh"),
 "close": SubResource("Animation_3dwkc"),
+"locked": SubResource("Animation_jhshp"),
 "open": SubResource("Animation_ckclt")
 }
 
 [node name="door" type="Node3D"]
+script = ExtResource("1_jvpoc")
 
 [node name="hinge" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="hinge"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.745308, 0, 0)

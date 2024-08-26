@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://uwwgdoqwn1it"]
+[gd_scene load_steps=21 format=3 uid="uid://uwwgdoqwn1it"]
 
 [ext_resource type="PackedScene" uid="uid://nrp6cx128ec3" path="res://scenes/player.tscn" id="1_2bq0x"]
 [ext_resource type="Material" uid="uid://dlkdulrqiau3f" path="res://material/wall.tres" id="1_87rs5"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/beginning_cutscenes.gd" id="9_riarh"]
 [ext_resource type="PackedScene" uid="uid://cagcy6i38iiqf" path="res://scenes/door.tscn" id="10_v38ld"]
 [ext_resource type="PackedScene" uid="uid://cxqrjk6eifhva" path="res://scenes/pumpkin.tscn" id="11_ae6hc"]
+[ext_resource type="PackedScene" uid="uid://b43a57wktppme" path="res://scenes/key.tscn" id="12_qwep5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gy0qj"]
 sky_top_color = Color(0.288054, 0.453071, 0.629746, 1)
@@ -121,7 +122,7 @@ mesh = SubResource("BoxMesh_g7qgf")
 shape = SubResource("BoxShape3D_tffnn")
 
 [node name="floor2" type="StaticBody3D" parent="Floors and walls"]
-transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 90.6001, 0, 5.2888, 0)
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 90.6001, 0, 4.99774, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floors and walls/floor2"]
 material_override = ExtResource("1_l81lb")
@@ -282,7 +283,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.64959, 37.5752)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.8623, 1.32605, -39.2079)
 
 [node name="Flashlight" parent="." instance=ExtResource("7_0aiqi")]
-transform = Transform3D(0.2, 0, 0, 0, 0.199121, -0.0187278, 0, 0.0187278, 0.199121, -3.66024, 1.50497, -40.8165)
+transform = Transform3D(0.2, 0, 0, 0, 0.199121, -0.0187278, 0, 0.0187278, 0.199121, -3.66024, 1.50497, -39.4362)
 
 [node name="ambience sounds" type="Node3D" parent="."]
 
@@ -327,8 +328,13 @@ libraries = {
 "": SubResource("AnimationLibrary_06fvo")
 }
 
-[node name="door" parent="." instance=ExtResource("10_v38ld")]
-transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -1.43843, 2.59233, -34.6597)
+[node name="door" parent="." node_paths=PackedStringArray("key") instance=ExtResource("10_v38ld")]
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -1.43843, 2.52218, -34.6597)
+key = NodePath("../key")
+locked = true
 
 [node name="pumpkin" parent="." instance=ExtResource("11_ae6hc")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.15894, 1.60779, -40)
+
+[node name="key" parent="." instance=ExtResource("12_qwep5")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.53731, 1.49577, -37.703)
