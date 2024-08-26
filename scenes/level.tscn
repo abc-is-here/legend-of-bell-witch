@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://uwwgdoqwn1it"]
+[gd_scene load_steps=25 format=3 uid="uid://uwwgdoqwn1it"]
 
 [ext_resource type="PackedScene" uid="uid://nrp6cx128ec3" path="res://scenes/player.tscn" id="1_2bq0x"]
 [ext_resource type="Material" uid="uid://dlkdulrqiau3f" path="res://material/wall.tres" id="1_87rs5"]
@@ -12,6 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://cagcy6i38iiqf" path="res://scenes/door.tscn" id="10_v38ld"]
 [ext_resource type="PackedScene" uid="uid://cxqrjk6eifhva" path="res://scenes/pumpkin.tscn" id="11_ae6hc"]
 [ext_resource type="PackedScene" uid="uid://b43a57wktppme" path="res://scenes/key.tscn" id="12_qwep5"]
+[ext_resource type="AudioStream" uid="uid://oi4i5u6bpm6t" path="res://sounds/key.mp3" id="13_bvadg"]
+[ext_resource type="AudioStream" uid="uid://bow8l41qocot3" path="res://sounds/scale-d6-106129.mp3" id="14_rvbby"]
+[ext_resource type="PackedScene" uid="uid://bxn6537nwq04u" path="res://scenes/paper.tscn" id="15_dgotq"]
+[ext_resource type="Material" uid="uid://bmdq40pue8mmf" path="res://material/paper.tres" id="16_4ltv7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gy0qj"]
 sky_top_color = Color(0.288054, 0.453071, 0.629746, 1)
@@ -338,3 +342,14 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.158
 
 [node name="key" parent="." instance=ExtResource("12_qwep5")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.53731, 1.49577, -37.703)
+
+[node name="keyPickUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_bvadg")
+volume_db = 12.53
+
+[node name="ObjPickUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_rvbby")
+
+[node name="paper" parent="." instance=ExtResource("15_dgotq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.587, 1.43, -38.6)
+paper_material = ExtResource("16_4ltv7")

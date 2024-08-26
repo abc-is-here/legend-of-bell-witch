@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxn6537nwq04u"]
+
+[ext_resource type="Script" path="res://scripts/paper.gd" id="1_to8ad"]
+[ext_resource type="Material" uid="uid://bmdq40pue8mmf" path="res://material/paper.tres" id="2_3alxu"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_3aa7t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7c0dc"]
+size = Vector3(1, 1.00348, 0.0339661)
+
+[node name="paper" type="StaticBody3D"]
+script = ExtResource("1_to8ad")
+paper_material = ExtResource("2_3alxu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_3aa7t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.00416565, -0.0017395)
+shape = SubResource("BoxShape3D_7c0dc")

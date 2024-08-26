@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cagcy6i38iiqf"]
+[gd_scene load_steps=14 format=3 uid="uid://cagcy6i38iiqf"]
 
 [ext_resource type="Script" path="res://scripts/door_parent.gd" id="1_jvpoc"]
 [ext_resource type="Material" uid="uid://gwn6lg3126f1" path="res://material/table.tres" id="1_l4glf"]
 [ext_resource type="Script" path="res://scripts/door.gd" id="1_oijmw"]
+[ext_resource type="AudioStream" uid="uid://c614v8ywbc6hk" path="res://sounds/doorOpenClose.mp3" id="4_4i4qk"]
+[ext_resource type="AudioStream" uid="uid://cmo38rvaodscn" path="res://sounds/locked.mp3" id="5_r8p7b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bnm75"]
 
@@ -108,3 +110,13 @@ root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_b8awx")
 }
+
+[node name="open_close" type="AudioStreamPlayer3D" parent="hinge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.054692, 0, 3.49691e-08)
+stream = ExtResource("4_4i4qk")
+max_distance = 15.0
+
+[node name="locked" type="AudioStreamPlayer3D" parent="hinge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.054692, 0, 3.49691e-08)
+stream = ExtResource("5_r8p7b")
+max_distance = 15.0

@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://hi3sjrn0rt1v"]
+[gd_scene load_steps=3 format=3 uid="uid://hi3sjrn0rt1v"]
+
+[ext_resource type="Texture2D" uid="uid://cr02rftwb5xa" path="res://Textures/paperTexture.jpeg" id="1_ucoa1"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_1h8a1"]
 
@@ -37,3 +39,13 @@ offset_right = 240.0
 offset_bottom = 76.0
 theme_override_font_sizes/normal_font_size = 40
 text = "[E] interact"
+
+[node name="paper" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 394.0
+offset_top = 64.0
+offset_right = 721.0
+offset_bottom = 546.0
+texture = ExtResource("1_ucoa1")
+expand_mode = 1
