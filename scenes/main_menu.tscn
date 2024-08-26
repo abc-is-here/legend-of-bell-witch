@@ -1,0 +1,125 @@
+[gd_scene load_steps=4 format=3 uid="uid://gmsxpqicvgvn"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_8k4hq"]
+[ext_resource type="Texture2D" uid="uid://rvc8klym4cku" path="res://assets/logo.png" id="1_vuv2f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ompqu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8k4hq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.159014, 0, 0.00126076, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -403.5
+offset_top = -403.5
+offset_right = 403.5
+offset_bottom = 403.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vuv2f")
+expand_mode = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -538.0
+offset_top = -122.0
+offset_right = -203.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ompqu")
+text = "Play"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -122.0
+offset_right = 197.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ompqu")
+text = "Settings"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 212.0
+offset_top = -122.0
+offset_right = 547.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_ompqu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ompqu")
+text = "Exit"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

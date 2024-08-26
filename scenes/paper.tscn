@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/paper.gd" id="1_to8ad"]
 [ext_resource type="Material" uid="uid://bmdq40pue8mmf" path="res://material/paper.tres" id="2_3alxu"]
-[ext_resource type="AudioStream" uid="uid://bow8l41qocot3" path="res://sounds/scale-d6-106129.mp3" id="3_dlkgb"]
+[ext_resource type="AudioStream" uid="uid://f7j16737o6s3" path="res://sounds/paper-rustle-81855.mp3" id="3_n00sb"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_3aa7t"]
 
@@ -22,4 +22,4 @@ transform = Transform3D(0.7, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -
 shape = SubResource("BoxShape3D_7c0dc")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_dlkgb")
+stream = ExtResource("3_n00sb")

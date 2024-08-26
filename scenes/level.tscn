@@ -352,20 +352,4 @@ stream = ExtResource("14_rvbby")
 
 [node name="paper" parent="." instance=ExtResource("15_dgotq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.587, 1.44901, -38.6)
-
-[node name="door2" parent="." node_paths=PackedStringArray("key") instance=ExtResource("10_v38ld")]
-transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -1.43843, 2.52218, 28.6729)
-key = NodePath("../key")
-locked = true
-
-[node name="paper2" parent="." instance=ExtResource("15_dgotq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.587, 1.44901, 24.7326)
-
-[node name="door3" parent="." node_paths=PackedStringArray("key") instance=ExtResource("10_v38ld")]
-transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 17.5273, 2.52218, -5.30285)
-key = NodePath("../key")
-locked = true
-
-[node name="paper3" parent="." instance=ExtResource("15_dgotq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3787, 1.44901, -9.24315)
 paper_ui_textures = ExtResource("16_nwrp8")
