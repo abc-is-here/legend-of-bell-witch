@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxn6537nwq04u"]
+[gd_scene load_steps=6 format=3 uid="uid://bxn6537nwq04u"]
 
 [ext_resource type="Script" path="res://scripts/paper.gd" id="1_to8ad"]
 [ext_resource type="Material" uid="uid://bmdq40pue8mmf" path="res://material/paper.tres" id="2_3alxu"]
+[ext_resource type="AudioStream" uid="uid://bow8l41qocot3" path="res://sounds/scale-d6-106129.mp3" id="3_dlkgb"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_3aa7t"]
 
@@ -19,3 +20,6 @@ mesh = SubResource("QuadMesh_3aa7t")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.00416565, -0.0017395)
 shape = SubResource("BoxShape3D_7c0dc")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dlkgb")
