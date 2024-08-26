@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://nrp6cx128ec3"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ga1rg"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="2_yr5vm"]
+[ext_resource type="Script" path="res://scripts/flashlight.gd" id="3_0afl2"]
+[ext_resource type="Script" path="res://scripts/raycast.gd" id="4_7xd4x"]
+[ext_resource type="AudioStream" uid="uid://d3qaofv5fwagf" path="res://sounds/flashlight.mp3" id="4_odtxi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yr35g"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4iamn"]
+radial_segments = 14
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_ga1rg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_yr35g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_4iamn")
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.756, -0.202721)
+script = ExtResource("2_yr5vm")
+
+[node name="flashlight" type="SpotLight3D" parent="head"]
+visible = false
+spot_range = 15.0
+spot_angle = 25.0
+script = ExtResource("3_0afl2")
+
+[node name="toggle" type="AudioStreamPlayer" parent="head/flashlight"]
+stream = ExtResource("4_odtxi")
+
+[node name="Camera3D" type="Camera3D" parent="head"]
+
+[node name="RayCast3D" type="RayCast3D" parent="head"]
+transform = Transform3D(1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 0, -0.0232223)
+script = ExtResource("4_7xd4x")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkb3el1gd14du"]
+
+[ext_resource type="Material" uid="uid://gwn6lg3126f1" path="res://material/table.tres" id="1_plsv7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n0hri"]
+size = Vector3(3.89671, 0.84375, 1.86145)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3f5f3"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fk1kf"]
+radial_segments = 16
+
+[node name="Table" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.37452, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87159e-05, 0.078125, 0.000549316)
+shape = SubResource("BoxShape3D_n0hri")
+
+[node name="table_top" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.92546, 0, 0, 0, 0.197457, 0, 0, 0, 1.90582, 0, 0, 0)
+material_override = ExtResource("1_plsv7")
+mesh = SubResource("BoxMesh_3f5f3")
+
+[node name="table_leg" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.35, 0, 0, 0, 0.1, -1.6865, -0.424278, 0.720543)
+material_override = ExtResource("1_plsv7")
+mesh = SubResource("CylinderMesh_fk1kf")
+
+[node name="table_leg2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.35, 0, 0, 0, 0.1, -1.6865, -0.424278, -0.721307)
+material_override = ExtResource("1_plsv7")
+mesh = SubResource("CylinderMesh_fk1kf")
+
+[node name="table_leg3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.35, 0, 0, 0, 0.1, 1.78355, -0.424278, 0.720543)
+material_override = ExtResource("1_plsv7")
+mesh = SubResource("CylinderMesh_fk1kf")
+
+[node name="table_leg4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.35, 0, 0, 0, 0.1, 1.78355, -0.424278, -0.721307)
+material_override = ExtResource("1_plsv7")
+mesh = SubResource("CylinderMesh_fk1kf")

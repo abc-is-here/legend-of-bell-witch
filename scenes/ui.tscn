@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://hi3sjrn0rt1v"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_1h8a1"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SprintSlider" type="HSlider" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -322.0
+offset_top = -56.0
+offset_right = 322.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_icons/grabber = SubResource("ImageTexture_1h8a1")
+max_value = 1.0
+step = 0.0
+value = 1.0
+
+[node name="interact_text" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 240.0
+offset_bottom = 76.0
+theme_override_font_sizes/normal_font_size = 40
+text = "[E] interact"
