@@ -22,3 +22,9 @@ material_override = ExtResource("2_qbxnp")
 mesh = SubResource("CapsuleMesh_px6x4")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+
+[node name="jumpscare_camera" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, -6.09374e-09, 0.997568, 0.0697042, 8.72101e-08, 0.0697042, -0.997568, 0, 0.749604, -1.58561)
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
