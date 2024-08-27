@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://uwwgdoqwn1it"]
+[gd_scene load_steps=38 format=3 uid="uid://uwwgdoqwn1it"]
 
 [ext_resource type="PackedScene" uid="uid://nrp6cx128ec3" path="res://scenes/player.tscn" id="1_2bq0x"]
 [ext_resource type="Material" uid="uid://dlkdulrqiau3f" path="res://material/wall.tres" id="1_87rs5"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cpodh5gp55mha" path="res://Textures/floorTexture.png" id="16_nwrp8"]
 [ext_resource type="Texture2D" uid="uid://dvpuwq2i1hnvw" path="res://assets/scary_face.jpg" id="17_jjjut"]
 [ext_resource type="Script" path="res://scripts/scare_trigger.gd" id="17_y7j2x"]
+[ext_resource type="AudioStream" uid="uid://w2ogp66t7b0m" path="res://sounds/068289_jumpscare-sound-47224.mp3" id="19_jl22l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gy0qj"]
 sky_top_color = Color(0.288054, 0.453071, 0.629746, 1)
@@ -173,6 +174,70 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_24q8n"),
 "peek": SubResource("Animation_vn7bd")
+}
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_aljos"]
+radial_segments = 14
+
+[sub_resource type="Animation" id="Animation_q8et1"]
+resource_name = "run"
+length = 0.4667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-6.23276, 1.49427, 29.8247), Vector3(-0.249924, 1.49427, 29.8247)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_w7uwq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-6.23276, 1.49427, 29.8247)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3egff"]
+_data = {
+"RESET": SubResource("Animation_w7uwq"),
+"run": SubResource("Animation_q8et1")
 }
 
 [node name="level" type="Node3D"]
@@ -356,9 +421,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.64959, -38.3607)
 [node name="light3" parent="lights" instance=ExtResource("5_wmaci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.64959, 37.5752)
 
-[node name="Table" parent="." instance=ExtResource("6_3vwh6")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.8623, 1.32605, -39.2079)
-
 [node name="Flashlight" parent="." instance=ExtResource("7_0aiqi")]
 transform = Transform3D(0.2, 0, 0, 0, 0.199121, -0.0187278, 0, 0.0187278, 0.199121, -3.66024, 1.50497, -39.4362)
 
@@ -405,50 +467,94 @@ libraries = {
 "": SubResource("AnimationLibrary_06fvo")
 }
 
-[node name="door" parent="." node_paths=PackedStringArray("key") instance=ExtResource("10_v38ld")]
-transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -1.43843, 2.52218, -34.6597)
-key = NodePath("../key")
-locked = true
-
 [node name="pumpkin" parent="." instance=ExtResource("11_ae6hc")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.15894, 1.60779, -40)
 
 [node name="key" parent="." instance=ExtResource("12_qwep5")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.53731, 1.49577, -37.703)
 
-[node name="keyPickUp" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_bvadg")
-volume_db = 12.53
+[node name="tables" type="Node3D" parent="."]
 
-[node name="ObjPickUp" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_rvbby")
+[node name="Table" parent="tables" instance=ExtResource("6_3vwh6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.8623, 1.32605, -39.2079)
 
-[node name="paper" parent="." instance=ExtResource("15_dgotq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.587, 1.44901, -38.6)
-paper_ui_textures = ExtResource("16_nwrp8")
+[node name="scare_triggers" type="Node3D" parent="."]
 
-[node name="scare_trigger" type="Area3D" parent="." node_paths=PackedStringArray("animationPlayer")]
+[node name="scare_trigger" type="Area3D" parent="scare_triggers" node_paths=PackedStringArray("animationPlayer", "scare_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.48976, -7.85995, -3.7365)
 script = ExtResource("17_y7j2x")
-animationPlayer = NodePath("../scare/AnimationPlayer")
+animationPlayer = NodePath("../../scares/scare/AnimationPlayer")
 anim_name = "peek"
+scare_sound = NodePath("../../sounds/scare_sound")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="scare_trigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="scare_triggers/scare_trigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58942, 6.15668, -1.95166)
 shape = SubResource("BoxShape3D_pa08k")
 
-[node name="scare" type="Node3D" parent="."]
+[node name="scare_trigger2" type="Area3D" parent="scare_triggers" node_paths=PackedStringArray("animationPlayer", "scare_sound")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.23276, -1.88754, 23.2892)
+script = ExtResource("17_y7j2x")
+animationPlayer = NodePath("../../scares/scare2/AnimationPlayer")
+anim_name = "run"
+scare_sound = NodePath("../../sounds/scare_sound")
 
-[node name="face" type="MeshInstance3D" parent="scare"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="scare_triggers/scare_trigger2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58942, 6.15668, -1.95166)
+shape = SubResource("BoxShape3D_pa08k")
+
+[node name="scares" type="Node3D" parent="."]
+
+[node name="scare" type="Node3D" parent="scares"]
+
+[node name="face" type="MeshInstance3D" parent="scares/scare"]
 transform = Transform3D(1.92324, 0.883173, 0, -1.41085, 1.20392, 0, 0, 0, 0.0121205, -5.20894, 2.60621, 4.99034)
 visible = false
 material_override = SubResource("StandardMaterial3D_xeco6")
 mesh = SubResource("BoxMesh_43tna")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="scare"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="scares/scare"]
 libraries = {
 "": SubResource("AnimationLibrary_c667q")
 }
 
-[connection signal="body_entered" from="scare_trigger" to="scare_trigger" method="_on_body_entered"]
+[node name="scare2" type="Node3D" parent="scares"]
+
+[node name="character" type="MeshInstance3D" parent="scares/scare2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.23276, 1.49427, 29.8247)
+visible = false
+mesh = SubResource("CapsuleMesh_aljos")
+skeleton = NodePath("../../../scare_triggers/scare_trigger2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="scares/scare2"]
+libraries = {
+"": SubResource("AnimationLibrary_3egff")
+}
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="keyPickUp" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("13_bvadg")
+volume_db = 12.53
+
+[node name="ObjPickUp" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("14_rvbby")
+
+[node name="scare_sound" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("19_jl22l")
+
+[node name="papers" type="Node3D" parent="."]
+
+[node name="paper" parent="papers" instance=ExtResource("15_dgotq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.587, 1.44901, -38.6)
+paper_ui_textures = ExtResource("16_nwrp8")
+
+[node name="doors" type="Node3D" parent="."]
+
+[node name="door" parent="doors" node_paths=PackedStringArray("key") instance=ExtResource("10_v38ld")]
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -1.43843, 2.52218, -34.6597)
+key = NodePath("../../key")
+locked = true
+
+[connection signal="body_entered" from="scare_triggers/scare_trigger" to="scare_triggers/scare_trigger" method="_on_body_entered"]
+[connection signal="body_entered" from="scare_triggers/scare_trigger2" to="scare_triggers/scare_trigger2" method="_on_body_entered"]
