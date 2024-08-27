@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://uwwgdoqwn1it"]
+[gd_scene load_steps=33 format=3 uid="uid://uwwgdoqwn1it"]
 
 [ext_resource type="PackedScene" uid="uid://nrp6cx128ec3" path="res://scenes/player.tscn" id="1_2bq0x"]
 [ext_resource type="Material" uid="uid://dlkdulrqiau3f" path="res://material/wall.tres" id="1_87rs5"]
@@ -16,6 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://bow8l41qocot3" path="res://sounds/scale-d6-106129.mp3" id="14_rvbby"]
 [ext_resource type="PackedScene" uid="uid://bxn6537nwq04u" path="res://scenes/paper.tscn" id="15_dgotq"]
 [ext_resource type="Texture2D" uid="uid://cpodh5gp55mha" path="res://Textures/floorTexture.png" id="16_nwrp8"]
+[ext_resource type="Texture2D" uid="uid://dvpuwq2i1hnvw" path="res://assets/scary_face.jpg" id="17_jjjut"]
+[ext_resource type="Script" path="res://scripts/scare_trigger.gd" id="17_y7j2x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gy0qj"]
 sky_top_color = Color(0.288054, 0.453071, 0.629746, 1)
@@ -103,6 +105,76 @@ _data = {
 "beginning": SubResource("Animation_adjh2")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_pa08k"]
+size = Vector3(12.1788, 13.3134, 0.90332)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xeco6"]
+blend_mode = 1
+albedo_texture = ExtResource("17_jjjut")
+
+[sub_resource type="BoxMesh" id="BoxMesh_43tna"]
+
+[sub_resource type="Animation" id="Animation_vn7bd"]
+resource_name = "peek"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("face:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-5.20894, 2.60621, 4.99034), Vector3(-3.51589, 2.60621, 4.99034), Vector3(-5.20894, 2.60621, 4.99034)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("face:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_24q8n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("face:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.20894, 2.60621, 4.99034)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("face:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c667q"]
+_data = {
+"RESET": SubResource("Animation_24q8n"),
+"peek": SubResource("Animation_vn7bd")
+}
+
 [node name="level" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -127,6 +199,7 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="floor2" type="StaticBody3D" parent="Floors and walls"]
 transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 90.6001, 0, 4.99774, 0)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floors and walls/floor2"]
 material_override = ExtResource("1_l81lb")
@@ -353,3 +426,29 @@ stream = ExtResource("14_rvbby")
 [node name="paper" parent="." instance=ExtResource("15_dgotq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.587, 1.44901, -38.6)
 paper_ui_textures = ExtResource("16_nwrp8")
+
+[node name="scare_trigger" type="Area3D" parent="." node_paths=PackedStringArray("animationPlayer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.48976, -7.85995, -3.7365)
+script = ExtResource("17_y7j2x")
+animationPlayer = NodePath("../scare/AnimationPlayer")
+anim_name = "peek"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="scare_trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58942, 6.15668, -1.95166)
+shape = SubResource("BoxShape3D_pa08k")
+
+[node name="scare" type="Node3D" parent="."]
+
+[node name="face" type="MeshInstance3D" parent="scare"]
+transform = Transform3D(1.92324, 0.883173, 0, -1.41085, 1.20392, 0, 0, 0, 0.0121205, -5.20894, 2.60621, 4.99034)
+visible = false
+material_override = SubResource("StandardMaterial3D_xeco6")
+mesh = SubResource("BoxMesh_43tna")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="scare"]
+libraries = {
+"": SubResource("AnimationLibrary_c667q")
+}
+
+[connection signal="body_entered" from="scare_trigger" to="scare_trigger" method="_on_body_entered"]
