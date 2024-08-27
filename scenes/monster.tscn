@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx1ux81apl4g6"]
+[gd_scene load_steps=6 format=3 uid="uid://dx1ux81apl4g6"]
 
 [ext_resource type="Script" path="res://scripts/monster.gd" id="1_ydtmb"]
 [ext_resource type="Material" uid="uid://dlkdulrqiau3f" path="res://material/wall.tres" id="2_qbxnp"]
+[ext_resource type="AudioStream" uid="uid://w2ogp66t7b0m" path="res://sounds/068289_jumpscare-sound-47224.mp3" id="3_apo40"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_47k48"]
 
@@ -27,5 +28,14 @@ avoidance_enabled = true
 
 [node name="jumpscare_camera" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, -6.09374e-09, 0.997568, 0.0697042, 8.72101e-08, 0.0697042, -0.997568, 0, 0.749604, -1.58561)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="jumpscare_camera"]
+layers = 16384
+light_color = Color(0.701961, 0.141176, 0, 1)
+light_energy = 0.5
+omni_range = 2.0
+
+[node name="jumpscare" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_apo40")
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

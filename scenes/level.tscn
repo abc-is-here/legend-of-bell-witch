@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://uwwgdoqwn1it"]
+[gd_scene load_steps=44 format=3 uid="uid://uwwgdoqwn1it"]
 
 [ext_resource type="PackedScene" uid="uid://nrp6cx128ec3" path="res://scenes/player.tscn" id="1_2bq0x"]
 [ext_resource type="Material" uid="uid://dlkdulrqiau3f" path="res://material/wall.tres" id="1_87rs5"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://w2ogp66t7b0m" path="res://sounds/068289_jumpscare-sound-47224.mp3" id="19_jl22l"]
 [ext_resource type="PackedScene" uid="uid://s2ei8brrw7wl" path="res://scenes/pause_menu.tscn" id="20_41k81"]
 [ext_resource type="PackedScene" uid="uid://dx1ux81apl4g6" path="res://scenes/monster.tscn" id="22_tkddc"]
+[ext_resource type="Script" path="res://scenes/monster_spawner.gd" id="23_hci8p"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gy0qj"]
 sky_top_color = Color(0.288054, 0.453071, 0.629746, 1)
@@ -114,6 +115,33 @@ albedo_texture = ExtResource("17_jjjut")
 
 [sub_resource type="BoxMesh" id="BoxMesh_43tna"]
 
+[sub_resource type="Animation" id="Animation_24q8n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("face:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.20894, 2.60621, 4.99034)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("face:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_vn7bd"]
 resource_name = "peek"
 length = 2.0
@@ -142,33 +170,6 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_24q8n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("face:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-5.20894, 2.60621, 4.99034)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("face:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c667q"]
 _data = {
 "RESET": SubResource("Animation_24q8n"),
@@ -177,6 +178,33 @@ _data = {
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_aljos"]
 radial_segments = 14
+
+[sub_resource type="Animation" id="Animation_w7uwq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("character:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-6.23276, 1.49427, 29.8247)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("character:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_q8et1"]
 resource_name = "run"
@@ -206,33 +234,6 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_w7uwq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("character:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-6.23276, 1.49427, 29.8247)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("character:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3egff"]
 _data = {
 "RESET": SubResource("Animation_w7uwq"),
@@ -249,6 +250,9 @@ agent_radius = 0.25
 [sub_resource type="BoxMesh" id="BoxMesh_g7qgf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tffnn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_577wh"]
+size = Vector3(46.4575, 1, 1)
 
 [node name="level" type="Node3D"]
 script = ExtResource("1_d6bb5")
@@ -575,6 +579,16 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.862
 
 [node name="monster" parent="." instance=ExtResource("22_tkddc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77072, 1.51449, 37.5135)
+visible = false
+
+[node name="monster_spawner" type="Area3D" parent="." node_paths=PackedStringArray("monster")]
+script = ExtResource("23_hci8p")
+monster = NodePath("../monster")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="monster_spawner"]
+transform = Transform3D(1, 0, 0, 0, 4.39775, 0, 0, 0, 8.36086, -3.45874, 0, 0)
+shape = SubResource("BoxShape3D_577wh")
 
 [connection signal="body_entered" from="scare_triggers/scare_trigger" to="scare_triggers/scare_trigger" method="_on_body_entered"]
 [connection signal="body_entered" from="scare_triggers/scare_trigger2" to="scare_triggers/scare_trigger2" method="_on_body_entered"]
+[connection signal="body_entered" from="monster_spawner" to="monster_spawner" method="_on_body_entered"]
