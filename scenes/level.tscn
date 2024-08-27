@@ -1,7 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://uwwgdoqwn1it"]
+[gd_scene load_steps=42 format=3 uid="uid://uwwgdoqwn1it"]
 
 [ext_resource type="PackedScene" uid="uid://nrp6cx128ec3" path="res://scenes/player.tscn" id="1_2bq0x"]
 [ext_resource type="Material" uid="uid://dlkdulrqiau3f" path="res://material/wall.tres" id="1_87rs5"]
+[ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_d6bb5"]
 [ext_resource type="Material" uid="uid://bthbuxmf5bs4s" path="res://material/floor.tres" id="1_l81lb"]
 [ext_resource type="PackedScene" uid="uid://hi3sjrn0rt1v" path="res://scenes/ui.tscn" id="2_ho23j"]
 [ext_resource type="PackedScene" uid="uid://c4xqo07rdsc4o" path="res://scenes/light.tscn" id="5_wmaci"]
@@ -20,6 +21,7 @@
 [ext_resource type="Script" path="res://scripts/scare_trigger.gd" id="17_y7j2x"]
 [ext_resource type="AudioStream" uid="uid://w2ogp66t7b0m" path="res://sounds/068289_jumpscare-sound-47224.mp3" id="19_jl22l"]
 [ext_resource type="PackedScene" uid="uid://s2ei8brrw7wl" path="res://scenes/pause_menu.tscn" id="20_41k81"]
+[ext_resource type="PackedScene" uid="uid://dx1ux81apl4g6" path="res://scenes/monster.tscn" id="22_tkddc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gy0qj"]
 sky_top_color = Color(0.288054, 0.453071, 0.629746, 1)
@@ -249,6 +251,7 @@ agent_radius = 0.25
 [sub_resource type="BoxShape3D" id="BoxShape3D_tffnn"]
 
 [node name="level" type="Node3D"]
+script = ExtResource("1_d6bb5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rxcke")
@@ -569,6 +572,9 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="Table" parent="NavigationRegion3D/tables" instance=ExtResource("6_3vwh6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.8623, 1.32605, -39.2079)
+
+[node name="monster" parent="." instance=ExtResource("22_tkddc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77072, 1.51449, 37.5135)
 
 [connection signal="body_entered" from="scare_triggers/scare_trigger" to="scare_triggers/scare_trigger" method="_on_body_entered"]
 [connection signal="body_entered" from="scare_triggers/scare_trigger2" to="scare_triggers/scare_trigger2" method="_on_body_entered"]

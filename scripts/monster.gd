@@ -15,12 +15,13 @@ func _ready() -> void:
 	player = get_node("/root/" + get_tree().current_scene.name + "/Player")
 
 func _physics_process(delta: float) -> void:
+	get_tree().create_timer(20.0, false).timeout
 	if visible:
 		if not is_on_floor():
 			velocity.y -= gravity*delta
 		var current_location = global_transform.origin
 		var next_location = $NavigationAgent3D.get_next_path_position()
-		var new_velocity = (next_location-current_location).normalized * SPEED
+		var new_velocity = (next_location-current_location).normalized() * SPEED
 		$NavigationAgent3D.set_velocity(new_velocity)
 		var look_dir = atan2(-velocity.x, -velocity.z)
 		rotation.y = look_dir

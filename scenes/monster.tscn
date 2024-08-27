@@ -7,8 +7,9 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_px6x4"]
 
-[node name="monster" type="CharacterBody3D"]
+[node name="monster" type="CharacterBody3D" groups=["monster"]]
 script = ExtResource("1_ydtmb")
+scene_name = "death"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_47k48")
