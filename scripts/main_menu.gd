@@ -11,6 +11,5 @@ func _on_button_pressed() -> void:
 	play()
 
 
-
 func _on_button_3_pressed() -> void:
 	quit()

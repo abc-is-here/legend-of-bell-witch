@@ -1,12 +1,16 @@
-[gd_scene format=3 uid="uid://s2ei8brrw7wl"]
+[gd_scene load_steps=2 format=3 uid="uid://s2ei8brrw7wl"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_4hbq6"]
 
 [node name="pause_menu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4hbq6")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -108,3 +112,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 25
 text = "Quit game"
+
+[connection signal="pressed" from="Button" to="." method="resume"]
+[connection signal="pressed" from="Button4" to="." method="back_to_menu"]
+[connection signal="pressed" from="Button5" to="." method="quit_game"]
