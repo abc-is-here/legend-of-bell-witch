@@ -1,10 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4xqo07rdsc4o"]
+[gd_scene load_steps=7 format=3 uid="uid://c4xqo07rdsc4o"]
 
+[ext_resource type="Script" path="res://scripts/battery.gd" id="1_dbtmc"]
 [ext_resource type="Material" uid="uid://4oog7uumpf2d" path="res://material/light.tres" id="1_jspax"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_0p01a"]
 
+[sub_resource type="Animation" id="Animation_7l1yq"]
+resource_name = "flashing_light"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.2, 0.4, 0.1, 0.6, 0.6, 0.4, 0.1, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_0euf3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7hev6"]
+_data = {
+"RESET": SubResource("Animation_0euf3"),
+"flashing_light": SubResource("Animation_7l1yq")
+}
+
 [node name="light" type="Node3D"]
+script = ExtResource("1_dbtmc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = ExtResource("1_jspax")
@@ -14,3 +52,8 @@ mesh = SubResource("SphereMesh_0p01a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.630381, 0)
 shadow_enabled = true
 omni_range = 8.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7hev6")
+}
