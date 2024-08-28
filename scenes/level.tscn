@@ -270,9 +270,17 @@ transform = Transform3D(-0.998389, 0, 0.0567451, 0, 1, 0, -0.0567451, 0, -0.9983
 
 [node name="light2" parent="lights" instance=ExtResource("5_wmaci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.64959, -38.3607)
+min_time = 4.0
+max_time = 15.0
+min_flash_time = 6.0
+max_flash_time = 15.0
+flash_lights_at_rand = true
 
 [node name="light3" parent="lights" instance=ExtResource("5_wmaci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.64959, 37.5752)
+min_time = 10.0
+max_time = 30.0
+flash_lights_at_rand = true
 
 [node name="Flashlight" parent="." instance=ExtResource("7_0aiqi")]
 transform = Transform3D(0.2, 0, 0, 0, 0.199121, -0.0187278, 0, 0.0187278, 0.199121, -3.66024, 1.50497, -39.4362)
@@ -424,7 +432,6 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="floor2" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 90.6001, 0, 4.99774, 0)
-visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/floor2"]
 material_override = ExtResource("1_l81lb")
