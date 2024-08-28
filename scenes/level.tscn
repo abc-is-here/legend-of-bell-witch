@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://uwwgdoqwn1it"]
+[gd_scene load_steps=45 format=3 uid="uid://uwwgdoqwn1it"]
 
 [ext_resource type="PackedScene" uid="uid://nrp6cx128ec3" path="res://scenes/player.tscn" id="1_2bq0x"]
 [ext_resource type="Material" uid="uid://dlkdulrqiau3f" path="res://material/wall.tres" id="1_87rs5"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://s2ei8brrw7wl" path="res://scenes/pause_menu.tscn" id="20_41k81"]
 [ext_resource type="PackedScene" uid="uid://dx1ux81apl4g6" path="res://scenes/monster.tscn" id="22_tkddc"]
 [ext_resource type="Script" path="res://scenes/monster_spawner.gd" id="23_hci8p"]
+[ext_resource type="PackedScene" uid="uid://d1ckjy6a5htth" path="res://battery.tscn" id="24_sq8cq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gy0qj"]
 sky_top_color = Color(0.288054, 0.453071, 0.629746, 1)
@@ -588,6 +589,27 @@ monster = NodePath("../monster")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="monster_spawner"]
 transform = Transform3D(1, 0, 0, 0, 4.39775, 0, 0, 0, 8.36086, -3.45874, 0, 0)
 shape = SubResource("BoxShape3D_577wh")
+
+[node name="battery" parent="." instance=ExtResource("24_sq8cq")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.30373, 1.52821, -39.7073)
+
+[node name="battery2" parent="." instance=ExtResource("24_sq8cq")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -9.05219, 0.604708, -39.7073)
+
+[node name="battery3" parent="." instance=ExtResource("24_sq8cq")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -9.05219, 0.604708, -39.4629)
+
+[node name="battery4" parent="." instance=ExtResource("24_sq8cq")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -9.05219, 0.604708, 9.28313)
+
+[node name="battery5" parent="." instance=ExtResource("24_sq8cq")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 11.6931, 0.604708, 9.28313)
+
+[node name="battery6" parent="." instance=ExtResource("24_sq8cq")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 11.6931, -261.91, -6.83872)
+
+[node name="battery7" parent="." instance=ExtResource("24_sq8cq")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -52.9485, -261.91, 264.346)
 
 [connection signal="body_entered" from="scare_triggers/scare_trigger" to="scare_triggers/scare_trigger" method="_on_body_entered"]
 [connection signal="body_entered" from="scare_triggers/scare_trigger2" to="scare_triggers/scare_trigger2" method="_on_body_entered"]
