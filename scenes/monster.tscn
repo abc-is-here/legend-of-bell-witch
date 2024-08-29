@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx1ux81apl4g6"]
+[gd_scene load_steps=7 format=3 uid="uid://dx1ux81apl4g6"]
 
 [ext_resource type="Script" path="res://scripts/monster.gd" id="1_ydtmb"]
 [ext_resource type="Material" uid="uid://dlkdulrqiau3f" path="res://material/wall.tres" id="2_qbxnp"]
 [ext_resource type="AudioStream" uid="uid://w2ogp66t7b0m" path="res://sounds/068289_jumpscare-sound-47224.mp3" id="3_apo40"]
+[ext_resource type="Script" path="res://scripts/enemy_raycast.gd" id="4_f1cmn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_47k48"]
 
@@ -37,5 +38,10 @@ omni_range = 2.0
 
 [node name="jumpscare" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_apo40")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, -0.489382)
+collision_mask = 3
+script = ExtResource("4_f1cmn")
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
