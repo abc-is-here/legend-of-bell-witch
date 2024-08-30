@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://uwwgdoqwn1it"]
+[gd_scene load_steps=49 format=3 uid="uid://uwwgdoqwn1it"]
 
 [ext_resource type="PackedScene" uid="uid://nrp6cx128ec3" path="res://scenes/player.tscn" id="1_2bq0x"]
 [ext_resource type="Material" uid="uid://dlkdulrqiau3f" path="res://material/wall.tres" id="1_87rs5"]
@@ -24,6 +24,10 @@
 [ext_resource type="PackedScene" uid="uid://dx1ux81apl4g6" path="res://scenes/monster.tscn" id="22_tkddc"]
 [ext_resource type="Script" path="res://scenes/monster_spawner.gd" id="23_hci8p"]
 [ext_resource type="PackedScene" uid="uid://d1ckjy6a5htth" path="res://battery.tscn" id="24_sq8cq"]
+[ext_resource type="PackedScene" uid="uid://bahwqfhajg47g" path="res://scenes/painting.tscn" id="25_x2hh4"]
+[ext_resource type="Material" uid="uid://njbj1wrpxd6n" path="res://material/painting.tres" id="26_00oy6"]
+[ext_resource type="Material" uid="uid://bmdq40pue8mmf" path="res://material/paper.tres" id="26_4tt4b"]
+[ext_resource type="Material" uid="uid://xkehrpjp4f7g" path="res://material/scare_painting.tres" id="27_fv0j0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gy0qj"]
 sky_top_color = Color(0.288054, 0.453071, 0.629746, 1)
@@ -270,8 +274,8 @@ transform = Transform3D(-0.998389, 0, 0.0567451, 0, 1, 0, -0.0567451, 0, -0.9983
 
 [node name="light2" parent="lights" instance=ExtResource("5_wmaci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.64959, -38.3607)
-min_time = 4.0
-max_time = 15.0
+min_time = 40.0
+max_time = 100.0
 min_flash_time = 6.0
 max_flash_time = 15.0
 flash_lights_at_rand = true
@@ -619,6 +623,22 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 11.6931, -261.91, -6.83
 
 [node name="battery7" parent="batteries" instance=ExtResource("24_sq8cq")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -52.9485, -261.91, 264.346)
+
+[node name="paintings" type="Node3D" parent="."]
+
+[node name="Painting" parent="paintings" instance=ExtResource("25_x2hh4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.02395, 2.41345, -37.5442)
+paint_mat = ExtResource("26_00oy6")
+scary_painting = ExtResource("27_fv0j0")
+stare_time = 4.0
+scare_time = 4.0
+
+[node name="Painting2" parent="paintings" instance=ExtResource("25_x2hh4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.992069, 2.41345, -16.6721)
+paint_mat = ExtResource("26_4tt4b")
+scary_painting = ExtResource("27_fv0j0")
+stare_time = 4.0
+scare_time = 4.0
 
 [connection signal="body_entered" from="scare_triggers/scare_trigger" to="scare_triggers/scare_trigger" method="_on_body_entered"]
 [connection signal="body_entered" from="scare_triggers/scare_trigger2" to="scare_triggers/scare_trigger2" method="_on_body_entered"]
