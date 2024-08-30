@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://uwwgdoqwn1it"]
+[gd_scene load_steps=50 format=3 uid="uid://uwwgdoqwn1it"]
 
 [ext_resource type="PackedScene" uid="uid://nrp6cx128ec3" path="res://scenes/player.tscn" id="1_2bq0x"]
 [ext_resource type="Material" uid="uid://dlkdulrqiau3f" path="res://material/wall.tres" id="1_87rs5"]
@@ -28,6 +28,7 @@
 [ext_resource type="Material" uid="uid://njbj1wrpxd6n" path="res://material/painting.tres" id="26_00oy6"]
 [ext_resource type="Material" uid="uid://bmdq40pue8mmf" path="res://material/paper.tres" id="26_4tt4b"]
 [ext_resource type="Material" uid="uid://xkehrpjp4f7g" path="res://material/scare_painting.tres" id="27_fv0j0"]
+[ext_resource type="PackedScene" uid="uid://b7cevi5e13iqr" path="res://scenes/closet.tscn" id="29_4nh5w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gy0qj"]
 sky_top_color = Color(0.288054, 0.453071, 0.629746, 1)
@@ -671,6 +672,9 @@ paint_mat = ExtResource("26_4tt4b")
 scary_painting = ExtResource("27_fv0j0")
 stare_time = 4.0
 scare_time = 1.0
+
+[node name="closet" parent="." instance=ExtResource("29_4nh5w")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.5736, 1.87999, -41.0245)
 
 [connection signal="body_entered" from="scare_triggers/scare_trigger" to="scare_triggers/scare_trigger" method="_on_body_entered"]
 [connection signal="body_entered" from="scare_triggers/scare_trigger2" to="scare_triggers/scare_trigger2" method="_on_body_entered"]

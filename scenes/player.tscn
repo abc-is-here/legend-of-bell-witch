@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://nrp6cx128ec3"]
+[gd_scene load_steps=11 format=3 uid="uid://nrp6cx128ec3"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ga1rg"]
+[ext_resource type="AudioStream" uid="uid://cmuk3a77cik60" path="res://sounds/foot-step-snow-1-189869.mp3" id="2_qdb07"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_yr5vm"]
 [ext_resource type="Script" path="res://scripts/flashlight.gd" id="3_0afl2"]
+[ext_resource type="AudioStream" uid="uid://d0rlsdjbb4gwv" path="res://sounds/foot-step-snow-4-189865.mp3" id="3_yypfh"]
 [ext_resource type="Script" path="res://scripts/raycast.gd" id="4_7xd4x"]
+[ext_resource type="AudioStream" uid="uid://c21a3yeghxlsv" path="res://sounds/foot-step-snow-13-189871.mp3" id="4_fnk07"]
 [ext_resource type="AudioStream" uid="uid://d3qaofv5fwagf" path="res://sounds/flashlight.mp3" id="4_odtxi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yr35g"]
@@ -15,6 +18,7 @@ radial_segments = 14
 collision_layer = 11
 collision_mask = 11
 script = ExtResource("1_ga1rg")
+walk_footsteps = Array[AudioStream]([ExtResource("2_qdb07"), ExtResource("3_yypfh"), ExtResource("4_fnk07")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_yr35g")
