@@ -1,6 +1,9 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bmdq40pue8mmf"]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bmdq40pue8mmf"]
 
 [ext_resource type="Texture2D" uid="uid://cr02rftwb5xa" path="res://Textures/paperTexture.jpeg" id="1_8a6d0"]
+[ext_resource type="Texture2D" uid="uid://burrda56tt68y" path="res://assets/concret_wall_normal.png" id="1_uktks"]
 
 [resource]
 roughness_texture = ExtResource("1_8a6d0")
+normal_enabled = true
+normal_texture = ExtResource("1_uktks")

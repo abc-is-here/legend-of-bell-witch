@@ -4,14 +4,18 @@ extends StaticBody3D
 @export var scary_painting: StandardMaterial3D
 @export var stare_time: float
 @export var scare_time: float
+@export var only_once: bool
 var isLooking = false
+var done = false
 
-func _process(delta: float) -> void:
+func _ready() -> void:
 	$MeshInstance3D2.material_override = paint_mat
 
 func scare():
-	if isLooking == false:
+	if isLooking == false && done == false:
 		isLooking = true
+		if only_once:
+			done = true
 		await get_tree().create_timer(stare_time, false).timeout
 		if isLooking == true:
 			$jumpscare.play()

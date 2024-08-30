@@ -1,9 +1,12 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bthbuxmf5bs4s"]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bthbuxmf5bs4s"]
 
-[ext_resource type="Texture2D" uid="uid://cpodh5gp55mha" path="res://Textures/floorTexture.png" id="1_agaa3"]
+[ext_resource type="Texture2D" uid="uid://dvnxrlkvt6hg2" path="res://assets/concrete_wall.png" id="1_uliny"]
+[ext_resource type="Texture2D" uid="uid://burrda56tt68y" path="res://assets/concret_wall_normal.png" id="2_a1y41"]
 
 [resource]
-albedo_color = Color(0.729412, 0.25098, 0.054902, 1)
-albedo_texture = ExtResource("1_agaa3")
-uv1_scale = Vector3(100, 100, 100)
+albedo_color = Color(0.37163, 0.195084, 0, 1)
+albedo_texture = ExtResource("1_uliny")
+normal_enabled = true
+normal_texture = ExtResource("2_a1y41")
+uv1_scale = Vector3(20, 20, 20)
 uv1_triplanar = true

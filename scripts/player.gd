@@ -8,10 +8,13 @@ var sprint_slider
 var drain_amount = 0.3
 var sprint_refresh = 0.4
 var movable = false
+var rng
+@export var walk_footsteps: Array[AudioStream]
 
 func _ready() -> void:
 	original_speed = SPEED
 	sprint_slider = get_node("/root/"+get_tree().current_scene.name + "/UI/SprintSlider")
+	rng = RandomNumberGenerator.new()
 
 func _process(delta: float) -> void:
 	if movable:
@@ -35,6 +38,10 @@ func _physics_process(delta: float) -> void:
 		var input_dir := Input.get_vector("left", "right", "forward", "backward")
 		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if direction:
+			if !$footstep_sound.playing:
+				var num = rng.randi_range(0, walk_footsteps.size() - 1)
+				$footstep_sound.stream = walk_footsteps[num]
+				$footstep_sound.play()
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
 					

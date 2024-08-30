@@ -426,6 +426,8 @@ navigation_mesh = SubResource("NavigationMesh_gregs")
 
 [node name="floor" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 90.6001, 0, 0, 0)
+collision_layer = 9
+collision_mask = 9
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/floor"]
 material_override = ExtResource("1_l81lb")
@@ -436,6 +438,8 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="floor2" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 90.6001, 0, 4.99774, 0)
+collision_layer = 8
+collision_mask = 8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/floor2"]
 material_override = ExtResource("1_l81lb")
@@ -446,6 +450,8 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="wall" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, -8.91347, 3, 0)
+collision_layer = 8
+collision_mask = 8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/wall"]
 material_override = ExtResource("1_87rs5")
@@ -456,6 +462,8 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="wall3" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 4.20557, 3, 9.92612)
+collision_layer = 8
+collision_mask = 8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/wall3"]
 material_override = ExtResource("1_87rs5")
@@ -466,6 +474,8 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="wall2" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 9.99393, 3, -9.90024)
+collision_layer = 8
+collision_mask = 8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/wall2"]
 material_override = ExtResource("1_87rs5")
@@ -476,6 +486,8 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="wall13" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 3.84725, 3, 23.2921)
+collision_layer = 8
+collision_mask = 8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/wall13"]
 material_override = ExtResource("1_87rs5")
@@ -486,6 +498,8 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="wall14" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, -10.0382, 3, 23.2921)
+collision_layer = 8
+collision_mask = 8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/wall14"]
 material_override = ExtResource("1_87rs5")
@@ -496,6 +510,8 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="wall6" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 5.76013, 3, -30.4571)
+collision_layer = 8
+collision_mask = 8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/wall6"]
 material_override = ExtResource("1_87rs5")
@@ -506,6 +522,8 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="wall8" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, -4.02323, 3, -16.8516)
+collision_layer = 8
+collision_mask = 8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/wall8"]
 material_override = ExtResource("1_87rs5")
@@ -516,6 +534,8 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="wall7" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, -6.42824, 3, -30.4571)
+collision_layer = 8
+collision_mask = 8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/wall7"]
 material_override = ExtResource("1_87rs5")
@@ -526,6 +546,8 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="wall4" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(2.63072, 0, 0, 0, 5, 0, 0, 0, 10, -6.35864, 3, -40.0905)
+collision_layer = 8
+collision_mask = 8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/wall4"]
 material_override = ExtResource("1_87rs5")
@@ -536,6 +558,8 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="wall5" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(2.63072, 0, 0, 0, 5, 0, 0, 0, 10, 5.06727, 3, -40.0905)
+collision_layer = 8
+collision_mask = 8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/wall5"]
 material_override = ExtResource("1_87rs5")
@@ -546,6 +570,8 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="wall9" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(2.63072, 0, 0, 0, 5, 0, 0, 0, 86.4709, 13.5197, 3, 0.265299)
+collision_layer = 8
+collision_mask = 8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/wall9"]
 material_override = ExtResource("1_87rs5")
@@ -556,6 +582,8 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="wall10" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(2.63072, 0, 0, 0, 5, 0, 0, 0, 86.4709, -13.8284, 3, 0.265299)
+collision_layer = 8
+collision_mask = 8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/wall10"]
 material_override = ExtResource("1_87rs5")
@@ -566,6 +594,8 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="wall11" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(-0.0111421, 0, 30.0825, 0, 5, 0, -2.63794, 0, -0.127062, -0.0348301, 3, 43.678)
+collision_layer = 8
+collision_mask = 8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/wall11"]
 material_override = ExtResource("1_87rs5")
@@ -576,6 +606,8 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="wall12" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(-0.0111421, 0, 30.0825, 0, 5, 0, -2.63794, 0, -0.127062, -0.0348301, 3, -44.0188)
+collision_layer = 8
+collision_mask = 8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floors and walls/wall12"]
 material_override = ExtResource("1_87rs5")
@@ -631,14 +663,14 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.023
 paint_mat = ExtResource("26_00oy6")
 scary_painting = ExtResource("27_fv0j0")
 stare_time = 4.0
-scare_time = 4.0
+scare_time = 1.0
 
 [node name="Painting2" parent="paintings" instance=ExtResource("25_x2hh4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.992069, 2.41345, -16.6721)
 paint_mat = ExtResource("26_4tt4b")
 scary_painting = ExtResource("27_fv0j0")
 stare_time = 4.0
-scare_time = 4.0
+scare_time = 1.0
 
 [connection signal="body_entered" from="scare_triggers/scare_trigger" to="scare_triggers/scare_trigger" method="_on_body_entered"]
 [connection signal="body_entered" from="scare_triggers/scare_trigger2" to="scare_triggers/scare_trigger2" method="_on_body_entered"]
