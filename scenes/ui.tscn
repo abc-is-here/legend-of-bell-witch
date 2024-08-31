@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://hi3sjrn0rt1v"]
+[gd_scene load_steps=4 format=3 uid="uid://hi3sjrn0rt1v"]
 
 [ext_resource type="Texture2D" uid="uid://cr02rftwb5xa" path="res://Textures/paperTexture.jpeg" id="1_ucoa1"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_1h8a1"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_yjb4o"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -79,3 +81,18 @@ offset_right = 1145.0
 offset_bottom = 56.0
 theme_override_font_sizes/normal_font_size = 25
 text = "Flashlight energy"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_yjb4o")

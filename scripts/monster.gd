@@ -6,12 +6,31 @@ var caught = false
 var distance: float
 var jumpscare_time = 2
 @export var scene_name: String
+@export var destination: Array[Node3D]
+var rng
+var current_destination
+var chasing = false
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-
 func _ready() -> void:
+	rng = RandomNumberGenerator.new()
 	player = get_node("/root/" + get_tree().current_scene.name + "/Player")
+	var random_dest = rng.randi_range(0, destination.size() - 1)
+	current_destination = destination[random_dest]
+
+func pick_new_destination():
+	if chasing == false:
+		var wait_time = rng.randf_range(3.0, 10.0)
+		await get_tree().create_timer(wait_time, false).timeout
+		var random_dest = rng.randi_range(0, destination.size() - 1)
+		current_destination = destination[random_dest]
+
+func _process(delta: float) -> void:
+	if chasing == false:
+		update_target_location(current_destination.global_transform.origin)
+	if chasing:
+		update_target_location(player.global_transform.origin)
 
 func _physics_process(delta: float) -> void:
 	get_tree().create_timer(20.0, false).timeout
@@ -24,16 +43,17 @@ func _physics_process(delta: float) -> void:
 		$NavigationAgent3D.set_velocity(new_velocity)
 		var look_dir = atan2(-velocity.x, -velocity.z)
 		rotation.y = look_dir
-		distance = player.global_transform.origin.distance_to(global_transform.origin)
-		if distance <=2 && caught == false:
-			player.visible = false
-			if !$jumpscare.playing:
-				$jumpscare.play()
-			SPEED = 0
-			caught = true
-			$jumpscare_camera.current = true
-			await get_tree().create_timer(jumpscare_time, false).timeout
-			get_tree().change_scene_to_file("res://scenes/"+scene_name+".tscn")
+		if chasing:
+			distance = player.global_transform.origin.distance_to(global_transform.origin)
+			if distance <=2 && caught == false:
+				player.visible = false
+				if !$jumpscare.playing:
+					$jumpscare.play()
+				SPEED = 0
+				caught = true
+				$jumpscare_camera.current = true
+				await get_tree().create_timer(jumpscare_time, false).timeout
+				get_tree().change_scene_to_file("res://scenes/"+scene_name+".tscn")
 
 func update_target_location(target_location):
 	$NavigationAgent3D.target_position = target_location

@@ -1,8 +1,7 @@
-[gd_scene load_steps=50 format=3 uid="uid://uwwgdoqwn1it"]
+[gd_scene load_steps=49 format=3 uid="uid://uwwgdoqwn1it"]
 
 [ext_resource type="PackedScene" uid="uid://nrp6cx128ec3" path="res://scenes/player.tscn" id="1_2bq0x"]
 [ext_resource type="Material" uid="uid://dlkdulrqiau3f" path="res://material/wall.tres" id="1_87rs5"]
-[ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_d6bb5"]
 [ext_resource type="Material" uid="uid://bthbuxmf5bs4s" path="res://material/floor.tres" id="1_l81lb"]
 [ext_resource type="PackedScene" uid="uid://hi3sjrn0rt1v" path="res://scenes/ui.tscn" id="2_ho23j"]
 [ext_resource type="PackedScene" uid="uid://c4xqo07rdsc4o" path="res://scenes/light.tscn" id="5_wmaci"]
@@ -261,7 +260,6 @@ agent_radius = 0.25
 size = Vector3(46.4575, 1, 1)
 
 [node name="level" type="Node3D"]
-script = ExtResource("1_d6bb5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rxcke")
@@ -439,6 +437,7 @@ shape = SubResource("BoxShape3D_tffnn")
 
 [node name="floor2" type="StaticBody3D" parent="NavigationRegion3D/Floors and walls"]
 transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 90.6001, 0, 4.99774, 0)
+visible = false
 collision_layer = 8
 collision_mask = 8
 
@@ -622,9 +621,10 @@ shape = SubResource("BoxShape3D_tffnn")
 [node name="Table" parent="NavigationRegion3D/tables" instance=ExtResource("6_3vwh6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.8623, 1.32605, -39.2079)
 
-[node name="monster" parent="." instance=ExtResource("22_tkddc")]
+[node name="monster" parent="." node_paths=PackedStringArray("destination") instance=ExtResource("22_tkddc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77072, 1.51449, 37.5135)
 visible = false
+destination = [NodePath("../destinations/destination"), NodePath("../destinations/destination2"), NodePath("../destinations/destination3"), NodePath("../destinations/destination4"), NodePath("../destinations/destination5"), NodePath("../destinations/destination6")]
 
 [node name="monster_spawner" type="Area3D" parent="." node_paths=PackedStringArray("monster")]
 script = ExtResource("23_hci8p")
@@ -675,6 +675,26 @@ scare_time = 1.0
 
 [node name="closet" parent="." instance=ExtResource("29_4nh5w")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.5736, 1.87999, -41.0245)
+
+[node name="destinations" type="Node3D" parent="."]
+
+[node name="destination" type="Node3D" parent="destinations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0923, 1.32752, 20.7021)
+
+[node name="destination2" type="Node3D" parent="destinations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.46823, 0.722926, 20.7021)
+
+[node name="destination3" type="Node3D" parent="destinations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.33874, 0.742513, 15.7748)
+
+[node name="destination4" type="Node3D" parent="destinations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0923, 1.32752, -3.21729)
+
+[node name="destination5" type="Node3D" parent="destinations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40759, 0.883689, -2.44919)
+
+[node name="destination6" type="Node3D" parent="destinations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.41153, 0.748539, -40.1589)
 
 [connection signal="body_entered" from="scare_triggers/scare_trigger" to="scare_triggers/scare_trigger" method="_on_body_entered"]
 [connection signal="body_entered" from="scare_triggers/scare_trigger2" to="scare_triggers/scare_trigger2" method="_on_body_entered"]
