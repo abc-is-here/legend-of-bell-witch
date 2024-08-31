@@ -1,9 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dx1ux81apl4g6"]
+[gd_scene load_steps=12 format=3 uid="uid://dx1ux81apl4g6"]
 
 [ext_resource type="Script" path="res://scripts/monster.gd" id="1_ydtmb"]
+[ext_resource type="AudioStream" uid="uid://cmuk3a77cik60" path="res://sounds/foot-step-snow-1-189869.mp3" id="2_8qu2w"]
 [ext_resource type="Material" uid="uid://dlkdulrqiau3f" path="res://material/wall.tres" id="2_qbxnp"]
 [ext_resource type="AudioStream" uid="uid://w2ogp66t7b0m" path="res://sounds/068289_jumpscare-sound-47224.mp3" id="3_apo40"]
+[ext_resource type="AudioStream" uid="uid://d0rlsdjbb4gwv" path="res://sounds/foot-step-snow-4-189865.mp3" id="3_hmxcy"]
+[ext_resource type="AudioStream" uid="uid://c21a3yeghxlsv" path="res://sounds/foot-step-snow-13-189871.mp3" id="4_d0hs4"]
 [ext_resource type="Script" path="res://scripts/enemy_raycast.gd" id="4_f1cmn"]
+[ext_resource type="Script" path="res://scripts/chase_player.gd" id="5_cifo2"]
+[ext_resource type="AudioStream" uid="uid://js5yn0gnsy8m" path="res://sounds/chase-120950.mp3" id="9_8fv5g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_47k48"]
 
@@ -12,6 +17,7 @@
 [node name="monster" type="CharacterBody3D" groups=["monster"]]
 script = ExtResource("1_ydtmb")
 scene_name = "death"
+walk_footsteps = Array[AudioStream]([ExtResource("2_8qu2w"), ExtResource("3_hmxcy"), ExtResource("4_d0hs4")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_47k48")
@@ -43,6 +49,19 @@ stream = ExtResource("3_apo40")
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, -0.489382)
 collision_mask = 3
 script = ExtResource("4_f1cmn")
+
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0.559829, -0.489382)
+collision_mask = 3
+script = ExtResource("5_cifo2")
+
+[node name="footsteps" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.629689, 0)
+max_db = 6.0
+max_distance = 20.0
+
+[node name="chase_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_8fv5g")
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="pick_new_destination"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
